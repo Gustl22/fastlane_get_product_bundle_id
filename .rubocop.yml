@@ -19,7 +19,7 @@ Naming/VariableNumber:
   Enabled: false
 
 # This is used a lot across the fastlane code base for config files
-Style/MethodMissingSuper:
+Style/MissingSuper:
   Enabled: false
 
 Style/MissingRespondToMissing:
@@ -48,16 +48,12 @@ Style/TernaryParentheses:
 Style/EmptyMethod:
   Enabled: false
 
-# It's better to be more explicit about the type
-Style/BracesAroundHashParameters:
-  Enabled: false
-
 # specs sometimes have useless assignments, which is fine
 Lint/UselessAssignment:
   Exclude:
     - '**/spec/**/*'
 
-Layout/AlignHash:
+Layout/HashAlignment:
   Enabled: false
 
 # HoundCI doesn't like this rule
@@ -69,7 +65,7 @@ Style/DoubleNegation:
   Enabled: false
 
 # Sometimes we allow a rescue block that doesn't contain code
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Enabled: false
 
 # Cop supports --auto-correct.

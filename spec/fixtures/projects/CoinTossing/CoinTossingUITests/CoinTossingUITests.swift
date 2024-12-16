@@ -28,13 +28,8 @@ class CoinTossingUITests: XCTestCase {
         return result
     }
     
-    func testResultIsHeads() {
-        
-        XCTAssertEqual(tossResult(), "Heads")
-        
-    }
-    
-    func testResultIsTails() {
-        XCTAssertEqual(tossResult(), "Tails")
+    func testResultIsHeadsOrTails() {
+        let result = tossResult()
+        XCTAssert(result.isEqual("Heads") || result.isEqual("Tails"))
     }
 }

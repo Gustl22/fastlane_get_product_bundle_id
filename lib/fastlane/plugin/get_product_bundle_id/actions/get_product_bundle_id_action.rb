@@ -17,8 +17,8 @@ module Fastlane
 
           UI.user_error!("Target '#{params[:target]}' does not exist in the given scheme") if target.nil?
         end
-
-        target.resolved_build_setting("PRODUCT_BUNDLE_IDENTIFIER")[params[:build_configuration]]
+        build_configuration = xcbuildconfiguration(target, params[:build_configuration])
+        build_configuration.build_settings['PRODUCT_BUNDLE_IDENTIFIER']
       end
 
       def self.xcscheme(params)
