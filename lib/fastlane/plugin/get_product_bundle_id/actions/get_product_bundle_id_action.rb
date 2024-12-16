@@ -11,15 +11,14 @@ module Fastlane
         project = Xcodeproj::Project.open(projectpath)
         targets = project.targets.find_all { |t| target_uuids.include?(t.uuid) }
         if params[:target].nil?
-          build_configuration = xcbuildconfiguration(targets.first, params[:build_configuration])
+          target = targets.first
         else
           target = targets.find { |t| t.name == params[:target] }
 
           UI.user_error!("Target '#{params[:target]}' does not exist in the given scheme") if target.nil?
-
-          build_configuration = xcbuildconfiguration(target, params[:build_configuration])
         end
-        build_configuration.build_settings['PRODUCT_BUNDLE_IDENTIFIER']
+
+        target.resolved_build_setting("PRODUCT_BUNDLE_IDENTIFIER")[params[:build_configuration]]
       end
 
       def self.xcscheme(params)
